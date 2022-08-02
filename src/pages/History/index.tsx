@@ -28,7 +28,7 @@ export function History() {
                 <td>{cycle.task}</td>
                 <td>{cycle.minutes} minutos</td>
                 <td>
-                  {formatDistanceToNow(cycle.startDate, {
+                  {formatDistanceToNow(new Date(cycle.startDate), {
                     addSuffix: true,
                     locale: ptBR,
                   })}
@@ -42,7 +42,7 @@ export function History() {
                     <Status statusColor="red">Interrompido</Status>
                   )}
 
-                  {!cycle.interruptedDate && !cycle.interruptedDate && (
+                  {!cycle.interruptedDate && !cycle.finishedDate && (
                     <Status statusColor="yellow">Em andamento</Status>
                   )}
                 </td>
