@@ -1,7 +1,7 @@
-import { differenceInSeconds } from "date-fns";
-import { useContext, useEffect } from "react";
-import { CyclesContext } from "../../../../contexts/CyclesContext";
-import { CountdownContainer, Separator } from "./styles";
+import { differenceInSeconds } from 'date-fns'
+import { useContext, useEffect } from 'react'
+import { CyclesContext } from '../../../../contexts/CyclesContext'
+import { CountdownContainer, Separator } from './styles'
 
 export function Countdown() {
   const {
@@ -10,61 +10,61 @@ export function Countdown() {
     markCurrentCycleAsFinished,
     amountSecondsPassed,
     setSecondsPassed,
-  } = useContext(CyclesContext);
+  } = useContext(CyclesContext)
 
-  const totalSeconds = activeCycle ? activeCycle.minutes * 60 : 0;
-  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0;
+  const totalSeconds = activeCycle ? activeCycle.minutes * 60 : 0
+  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
 
-  const minutesAmount = Math.floor(currentSeconds / 60);
-  const secondsAmount = currentSeconds % 60;
+  const minutesAmount = Math.floor(currentSeconds / 60)
+  const secondsAmount = currentSeconds % 60
 
   // Inclue o "0" no começo da string. Para que tenha sempre 2 caracteres
-  const minutes = String(minutesAmount).padStart(2, "0");
-  const seconds = String(secondsAmount).padStart(2, "0");
+  const minutes = String(minutesAmount).padStart(2, '0')
+  const seconds = String(secondsAmount).padStart(2, '0')
 
   useEffect(() => {
     if (activeCycle) {
-      document.title = `${minutes}:${seconds}`;
+      document.title = `${minutes}:${seconds}`
     }
-  }, [minutes, seconds, activeCycle]);
+  }, [minutes, seconds, activeCycle])
 
   useEffect(() => {
-    let interval: number;
+    let interval: number
 
     if (activeCycle) {
       interval = setInterval(() => {
         const secondsDifference = differenceInSeconds(
           new Date(),
-          new Date(activeCycle.startDate)
-        );
+          new Date(activeCycle.startDate),
+        )
 
-        //Se for zero, finaliza a contagem
+        // Se for zero, finaliza a contagem
         if (secondsDifference >= totalSeconds) {
-          markCurrentCycleAsFinished();
+          markCurrentCycleAsFinished()
 
-          //Zerar o contador
-          setSecondsPassed(totalSeconds);
+          // Zerar o contador
+          setSecondsPassed(totalSeconds)
 
-          //Para de executar o intervalo
-          clearInterval(interval);
+          // Para de executar o intervalo
+          clearInterval(interval)
         } else {
-          //Diminui o contador
-          setSecondsPassed(secondsDifference);
+          // Diminui o contador
+          setSecondsPassed(secondsDifference)
         }
-      }, 1000);
+      }, 1000)
     }
 
-    //Função que remove os intervalos antigos
+    // Função que remove os intervalos antigos
     return () => {
-      clearInterval(interval);
-    };
+      clearInterval(interval)
+    }
   }, [
     activeCycle,
     totalSeconds,
     activeCycleId,
     markCurrentCycleAsFinished,
     setSecondsPassed,
-  ]);
+  ])
 
   return (
     <CountdownContainer>
@@ -75,5 +75,5 @@ export function Countdown() {
       <span>{seconds[0]}</span>
       <span>{seconds[1]}</span>
     </CountdownContainer>
-  );
+  )
 }
