@@ -1,13 +1,13 @@
 # Ignite Timer
 ## Descrição do Projeto
-<p align="center">This project was made in Rocketseat Ignite course. It's a dashboard made with Chakra UI and React.</p>
+<p align="center">This project was made in Rocketseat Ignite course. It's a timer made with React.</p>
 
 <h4 align="center"> 
-	🚧 Em construção...  🚧
+	✅ Finalizado ✅
 </h4>
 
 <h1 align="center">
-  <img alt="Dashgo" title="#Dashgo" src="./.github/dashgo.png" />
+  <img alt="Timer" title="#Timer" src="./.github/timer.png" />
 </h1>
 
 ### Pré-requisitos
@@ -32,8 +32,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - [React](https://pt-br.reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Next.js](https://nextjs.org/)
-- [Chakra.UI](https://chakra-ui.com/)
+- [Vite](https://vitejs.dev/)
+- [Styled-components](https://styled-components.com/)
 
 ### Autor
 ---
